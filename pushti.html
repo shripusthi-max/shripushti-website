@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pushti Makhana — Shri Pushti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1420; --cream:#FBF1DF; --marigold:#E7A335; --marigold-deep:#C97F1B;
+    --vermilion:#B5402C; --teal:#2F6E62; --teal-soft:#DCEAE6; --line: rgba(43,20,32,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Yeseva One',serif;font-weight:400;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,241,223,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 28px 10px;gap:10px;flex-wrap:wrap;}
+  .brand{font-family:'Yeseva One',serif;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;}
+  .brand img{height:34px;width:auto;display:block;}
+  .subnav{list-style:none;display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;font-size:0.76rem;font-weight:600;width:100%;justify-content:center;}
+  .subnav a{text-decoration:none;position:relative;padding-bottom:2px;}
+  .subnav a.current{color:var(--vermilion);}
+  @media(min-width:640px){.subnav{gap:22px;font-size:0.85rem;width:auto;justify-content:flex-start;}}
+
+  .hero{padding:56px 0 44px;text-align:center;background:linear-gradient(160deg,var(--teal),#1F4B43);color:var(--cream);}
+  .eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--marigold);margin-bottom:16px;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3rem);}
+  .hero p{max-width:500px;margin:16px auto 0;opacity:0.9;line-height:1.6;}
+
+  .trust-bar{display:flex;justify-content:center;gap:clamp(14px,4vw,36px);flex-wrap:wrap;margin-top:28px;}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;}
+  .trust-item .ic{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+  .hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--vermilion);color:#fff;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:0.95rem;box-shadow:0 12px 26px rgba(181,64,44,0.35);}
+
+  .grid-section{padding:56px 0 40px;}
+  .grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr 1fr;}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(43,20,32,0.05);transition:transform .25s ease, box-shadow .25s ease;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(43,20,32,0.14);}
+  .swatch{aspect-ratio:4/3;position:relative;overflow:hidden;}
+  .swatch img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .card:hover .swatch img{transform:scale(1.07);}
+  .swatch .badge{position:absolute;top:12px;left:12px;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--teal);color:#fff;padding:4px 10px;border-radius:999px;}
+  .card-body{padding:20px 22px 24px;}
+  .card-body h3{font-size:1.15rem;margin-bottom:6px;}
+  .card-body .desc{font-size:0.88rem;line-height:1.55;color:rgba(43,20,32,0.7);margin-bottom:16px;}
+  .order-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;text-align:center;padding:12px 0;border-radius:999px;background:var(--vermilion);color:#fff;font-weight:700;font-size:0.88rem;text-decoration:none;box-sizing:border-box;transition:background .2s ease;}
+  .order-btn:hover{background:var(--marigold-deep);}
+
+  .about{padding:20px 0 64px;}
+  .about-card{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:32px clamp(20px,5vw,44px);
+    display:grid;grid-template-columns:1fr;gap:28px;
+  }
+  @media(min-width:720px){.about-card{grid-template-columns:repeat(3,1fr);}}
+  .about-item{display:flex;gap:14px;align-items:flex-start;}
+  .about-item .ic{width:40px;height:40px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .about-item h4{font-family:'Yeseva One',serif;font-size:1.02rem;font-weight:400;margin-bottom:4px;}
+  .about-item p{font-size:0.86rem;line-height:1.55;color:rgba(43,20,32,0.72);margin:0;}
+
+  .ig-note{max-width:560px;margin:0 auto 0;text-align:center;font-size:0.92rem;line-height:1.6;color:rgba(43,20,32,0.75);}
+  .ig-note a{color:var(--vermilion);font-weight:700;text-decoration:none;}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:0.82rem;color:rgba(43,20,32,0.55);}
+
+  .float-wa{position:fixed;right:20px;bottom:20px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--vermilion);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(43,20,32,0.28);text-decoration:none;}
+  .origin-band{
+    background:linear-gradient(160deg,var(--teal),#1F4B43);
+    color:var(--cream);
+    border-radius:22px;
+    padding:clamp(28px,5vw,44px);
+    text-align:center;
+    margin-bottom:32px;
+  }
+  .origin-band .eyebrow{color:var(--marigold);margin-bottom:10px;}
+  .origin-band h3{font-size:clamp(1.4rem,3.4vw,1.9rem);margin-bottom:6px;}
+  .origin-band .lead{font-family:'Yeseva One',serif;font-size:1.1rem;color:var(--marigold);margin-bottom:16px;}
+  .origin-band p{max-width:560px;margin:0 auto;font-size:0.98rem;line-height:1.65;opacity:0.92;}
+  .origin-band .tagline{margin-top:18px;font-weight:700;font-size:0.9rem;opacity:0.95;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html"><img src="images/logo.jpg" alt="Shri Pushti"></a>
+    <ul class="subnav">
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="bangles.html">Sri Bangles</a></li>
+      <li><a href="pushti.html" class="current">Pushti</a></li>
+      <li><a href="seasonal.html">Seasonal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Shop the collection</div>
+    <h1>Pushti Makhana</h1>
+    <p>Premium Fox Nuts, Sourced Directly from Purnia, Bihar — The Heartland of India's Finest Makhana.</p>
+
+    <div class="trust-bar">
+      <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7l9 5 9-5-9-5Z" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 12l9 5 9-5" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Sourced from Purnia, Bihar</div>
+      <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6C19 16.5 12 21 12 21Z" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Good for Health</div>
+      <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="#E7A335" stroke-width="1.8"/><path d="M3 12h18" stroke="#E7A335" stroke-width="1.8"/></svg></span> 100% Plain, No Additives</div>
+    </div>
+
+    <a class="hero-cta" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20Pushti%20Makhana" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+      Order on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="grid-section">
+  <div class="wrap">
+    <div class="grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="origin-band">
+      <div class="eyebrow">From Purnia, Bihar to Your Home</div>
+      <h3>Where our story begins.</h3>
+      <p>From the makhana fields of Purnia, Bihar, we source our fox nuts with care — bringing you a product rooted in the land, tradition and people behind it.</p>
+      <div class="tagline">Sourced with care. Selected with purpose. Packed for your home.</div>
+    </div>
+
+    <div class="about-card">
+      <div class="about-item">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7l9 5 9-5-9-5Z" stroke="#2F6E62" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5" stroke="#2F6E62" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Straight from Purnia, Bihar</h4>
+          <p>Purnia is one of India's leading makhana-growing regions — our seeds come directly from there, close to the source.</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6C19 16.5 12 21 12 21Z" stroke="#2F6E62" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Good for Everyday Health</h4>
+          <p>A light, wholesome snack — naturally low in fat and easy to include in a daily diet, for any age.</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="#2F6E62" stroke-width="1.7"/><path d="M3 12h18M12 8v12" stroke="#2F6E62" stroke-width="1.7"/></svg></div>
+        <div>
+          <h4>Graded by Size</h4>
+          <p>Available in 4, 5, and 6 Suta grades — the bigger the grade, the larger and plumper the makhana.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ig-note" style="margin-top:32px;">
+      Want to see it fresh off the batch? Follow us on Instagram —
+      <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener">visit @shri_pushti</a>.
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Shri Pushti — Pushti Makhana &middot; <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;">Instagram</a></footer>
+
+<a class="float-wa" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20Pushti%20Makhana" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#FBF1DF"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Plain makhana, graded by size — swap in real prices whenever you're ready.
+  const products = [
+    { name: "4 Suta", tag: "Medium Grade", img: "images/makhana_4suta.jpg", desc: "A good everyday size — light, crisp, and easy to snack on." },
+    { name: "5 Suta", tag: "Large Grade", img: "images/makhana_5suta.jpg", desc: "Bigger, plumper seeds — a popular pick for gifting and festive trays." },
+    { name: "6 Suta", tag: "Premium Grade", img: "images/makhana_6suta.jpg", desc: "Our largest grade — extra plump and premium, for those who want the best." },
+  ];
+
+  const grid = document.getElementById('productGrid');
+  products.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    const msg = encodeURIComponent(`Hi Shri Pushti, I'd like to order: ${p.name} Makhana (Pushti)`);
+    card.innerHTML = `
+      <div class="swatch">
+        <span class="badge">${p.tag}</span>
+        <img src="${p.img}" alt="${p.name} makhana">
+      </div>
+      <div class="card-body">
+        <h3>${p.name} Makhana</h3>
+        <div class="desc">${p.desc}</div>
+        <a class="order-btn" href="https://wa.me/919187572933?text=${msg}" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>`;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Shri Pushti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1420; --cream:#FBF1DF; --marigold:#E7A335; --marigold-deep:#C97F1B;
+    --vermilion:#B5402C; --teal:#2F6E62; --teal-soft:#DCEAE6; --line: rgba(43,20,32,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Yeseva One',serif;font-weight:400;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,241,223,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav.wrap{max-width:1080px;display:flex;align-items:center;justify-content:space-between;padding:12px 28px 10px;gap:10px;flex-wrap:wrap;}
+  .brand{font-family:'Yeseva One',serif;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;}
+  .brand img{height:34px;width:auto;display:block;}
+  .subnav{list-style:none;display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;font-size:0.76rem;font-weight:600;width:100%;justify-content:center;}
+  .subnav a{text-decoration:none;position:relative;padding-bottom:2px;}
+  .subnav a.current{color:var(--vermilion);}
+  @media(min-width:640px){.subnav{gap:22px;font-size:0.85rem;width:auto;justify-content:flex-start;}}
+
+  .hero{padding:56px 0 8px;text-align:center;}
+  .eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
+  .hero h1{font-size:clamp(2.1rem,5vw,2.9rem);}
+
+  .story-mark{
+    width:150px;height:150px;border-radius:50%;
+    background:conic-gradient(from 200deg, var(--marigold), var(--vermilion), var(--teal), var(--marigold));
+    display:flex;align-items:center;justify-content:center;
+    margin:36px auto;position:relative;
+  }
+  .story-mark:before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--cream);}
+  .story-mark img{position:relative;width:70%;height:70%;object-fit:contain;border-radius:50%;}
+
+  .story-body{padding:8px 0 70px;}
+  .story-body p{font-size:1.12rem;line-height:1.85;color:rgba(43,20,32,0.85);margin:0 0 24px;}
+  .story-body p:first-of-type{font-family:'Yeseva One',serif;font-size:1.5rem;line-height:1.4;color:var(--ink);margin-bottom:28px;}
+  .story-body p.closer{font-family:'Yeseva One',serif;font-size:1.4rem;color:var(--vermilion);margin-top:32px;}
+
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+  .cbtn{padding:13px 26px;border-radius:999px;font-weight:700;font-size:0.92rem;text-decoration:none;display:inline-block;}
+  .cbtn.primary{background:var(--vermilion);color:#fff;}
+  .cbtn.ghost{border:1.5px solid var(--ink);color:var(--ink);}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:0.82rem;color:rgba(43,20,32,0.55);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html"><img src="images/logo.jpg" alt="Shri Pushti"></a>
+    <ul class="subnav">
+      <li><a href="story.html" class="current">Our Story</a></li>
+      <li><a href="bangles.html">Sri Bangles</a></li>
+      <li><a href="pushti.html">Pushti</a></li>
+      <li><a href="seasonal.html">Seasonal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Our Story</div>
+    <h1>It started at home.</h1>
+    <div class="story-mark"><img src="images/logo.jpg" alt="Shri Pushti"></div>
+  </div>
+</section>
+
+<section class="story-body">
+  <div class="wrap">
+    <p>Shri Pushti brings together two things we have always loved — the joy of dressing up and the simple goodness of food made with care.</p>
+    <p>Pushti Makhana begins at the source, in Purnia, Bihar — one of India's key makhana-growing regions. We source our fox nuts directly, select them carefully, and roast them with the same attention to quality we'd give to something made for our own family.</p>
+    <p>We believe good food doesn't need to be complicated. It needs to be honest, carefully sourced and thoughtfully made.</p>
+    <p class="closer">That's Pushti.</p>
+
+    <div class="cta-row">
+      <a class="cbtn primary" href="bangles.html">Explore Sri Bangles</a>
+      <a class="cbtn ghost" href="pushti.html">Discover Pushti</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Shri Pushti &middot; <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;">Instagram</a></footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

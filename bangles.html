@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Bangles — Shri Pushti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1420; --cream:#FBF1DF; --marigold:#E7A335; --marigold-deep:#C97F1B;
+    --vermilion:#B5402C; --teal:#2F6E62; --teal-soft:#DCEAE6; --line: rgba(43,20,32,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Yeseva One',serif;font-weight:400;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,241,223,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 28px 10px;gap:10px;flex-wrap:wrap;}
+  .brand{font-family:'Yeseva One',serif;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;}
+  .brand img{height:34px;width:auto;display:block;}
+  .subnav{list-style:none;display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;font-size:0.76rem;font-weight:600;width:100%;justify-content:center;}
+  .subnav a{text-decoration:none;position:relative;padding-bottom:2px;}
+  .subnav a.current{color:var(--vermilion);}
+  @media(min-width:640px){.subnav{gap:22px;font-size:0.85rem;width:auto;justify-content:flex-start;}}
+
+  .hero{position:relative;padding:56px 0 44px;text-align:center;color:var(--cream);background:linear-gradient(160deg,#3A1B2C,#5A2438);overflow:hidden;}
+  .hero .wrap{position:relative;z-index:1;}
+  .eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--marigold);margin-bottom:16px;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3rem);}
+  .hero p{max-width:480px;margin:16px auto 0;opacity:0.85;line-height:1.6;}
+
+  .trust-bar{display:flex;justify-content:center;gap:clamp(14px,4vw,36px);flex-wrap:wrap;margin-top:30px;position:relative;z-index:1;}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;letter-spacing:0.02em;}
+  .trust-item .ic{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+  .hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:30px;background:var(--vermilion);color:#fff;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:0.95rem;position:relative;z-index:1;box-shadow:0 12px 26px rgba(181,64,44,0.4);}
+
+  /* ---------- festive highlight carousel ---------- */
+  .highlight{padding:0 28px;margin:28px 0 8px;}
+  .highlight-wrap{
+    max-width:1080px;margin:0 auto;
+    position:relative;border-radius:24px;overflow:hidden;
+    aspect-ratio:16/8;
+    background:linear-gradient(160deg,#3A1B2C,#5A2438);
+    box-shadow:0 20px 44px rgba(43,20,32,0.25);
+  }
+  @media(min-width:700px){.highlight-wrap{aspect-ratio:3/1;}}
+  .highlight-slide{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;transition:opacity 1s ease;
+  }
+  .highlight-slide.active{opacity:1;}
+  .highlight-slide.illustrated-slide svg{width:100%;height:100%;display:block;}
+  .highlight-slide img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(1.12) brightness(0.92);
+  }
+  .highlight-slide::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg, rgba(43,20,32,0.75) 0%, rgba(43,20,32,0.05) 45%, rgba(43,20,32,0.35) 100%);
+  }
+  .highlight-deco{position:absolute;inset:0;pointer-events:none;z-index:2;}
+  .highlight-caption{
+    position:absolute;left:0;right:0;bottom:0;z-index:3;
+    padding:14px clamp(70px,14vw,100px) 14px clamp(16px,3vw,32px);
+    color:var(--cream);
+  }
+  .highlight-caption .tag{
+    display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;
+    background:rgba(231,163,53,0.9);color:#2B1420;padding:3px 10px;border-radius:999px;margin-bottom:6px;
+  }
+  .highlight-caption h3{
+    font-family:'Yeseva One',serif;font-weight:400;text-shadow:0 2px 10px rgba(0,0,0,0.3);
+    font-size:clamp(0.95rem,2.4vw,1.5rem);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .highlight-dots{position:absolute;right:clamp(16px,3vw,32px);bottom:20px;z-index:4;display:flex;gap:6px;}
+  .highlight-dots button{width:7px;height:7px;border-radius:50%;border:none;background:rgba(255,255,255,0.4);padding:0;cursor:pointer;transition:background .2s ease, transform .2s ease;}
+  .highlight-dots button.active{background:var(--marigold);transform:scale(1.3);}
+
+  .grid-section{padding:56px 0 80px;}
+  .grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr;}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(43,20,32,0.05);transition:transform .25s ease, box-shadow .25s ease;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(43,20,32,0.14);}
+  .swatch{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .swatch img.photo{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .card:hover .swatch img.photo{transform:scale(1.07);}
+  .swatch .badge{position:absolute;top:12px;left:12px;font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--vermilion);color:#fff;padding:4px 10px;border-radius:999px;z-index:2;}
+  .card-body{padding:18px 20px 20px;}
+  .card-body h3{font-size:1.08rem;margin-bottom:6px;}
+  .card-body .price{font-weight:700;color:var(--vermilion);font-size:0.9rem;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+  .order-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;text-align:center;padding:12px 0;border-radius:999px;background:var(--teal);color:#fff;font-weight:700;font-size:0.88rem;text-decoration:none;box-sizing:border-box;transition:background .2s ease;}
+  .order-btn:hover{background:var(--marigold-deep);}
+
+  .note{max-width:640px;margin:0 auto 40px;text-align:center;background:#fff;border:1.5px dashed var(--line);border-radius:16px;padding:22px 26px;font-size:0.92rem;line-height:1.6;color:rgba(43,20,32,0.75);}
+
+  .section-head{max-width:640px;margin:0 auto 32px;text-align:center;}
+  .section-head h2{font-size:clamp(1.5rem,3.4vw,2rem);}
+  .section-head p{margin-top:10px;color:rgba(43,20,32,0.7);font-size:0.95rem;line-height:1.55;}
+
+  .collections{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:56px;}
+  @media(min-width:560px){.collections{grid-template-columns:repeat(2,1fr);gap:20px;}}
+  @media(min-width:820px){.collections{grid-template-columns:repeat(3,1fr);}}
+  .collection-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(43,20,32,0.05);}
+  .collection-photo{aspect-ratio:1/1;overflow:hidden;position:relative;background:#EFE4D0;}
+  .collection-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s ease;}
+  .collection-photo .badge{position:absolute;top:10px;left:10px;font-size:0.56rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--vermilion);color:#fff;padding:4px 9px;border-radius:999px;z-index:2;}
+  .collection-info{padding:14px 14px 16px;}
+  .collection-info h3{font-size:0.98rem;margin-bottom:4px;line-height:1.25;}
+  .collection-info .desc{font-size:0.76rem;line-height:1.4;color:rgba(43,20,32,0.65);margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .swatch-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+  .swatch-dot{width:22px;height:22px;border-radius:50%;border:2px solid transparent;background-size:cover;background-position:center;cursor:pointer;padding:0;flex-shrink:0;transition:transform .15s ease, border-color .15s ease;}
+  .swatch-dot:hover{transform:scale(1.12);}
+  .swatch-dot.active{border-color:var(--vermilion);}
+  .color-label{font-size:0.72rem;font-weight:700;color:var(--vermilion);margin-bottom:10px;}
+  .order-btn{padding:9px 0;font-size:0.76rem;gap:5px;}
+  .order-btn:hover{background:var(--marigold-deep);}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:0.82rem;color:rgba(43,20,32,0.55);}
+
+  .float-wa{position:fixed;right:20px;bottom:20px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(43,20,32,0.28);text-decoration:none;}  .story-band{
+    background:linear-gradient(160deg,#3A1B2C,#5A2438);
+    color:var(--cream);
+    border-radius:22px;
+    padding:clamp(28px,5vw,48px);
+    text-align:center;
+    margin:0 auto 60px;
+    max-width:1080px;
+  }
+  .story-band .eyebrow{color:var(--marigold);margin-bottom:12px;}
+  .story-band h3{font-size:clamp(1.5rem,3.6vw,2.1rem);margin-bottom:18px;}
+  .story-band .lines-poem{font-family:'Yeseva One',serif;font-size:clamp(1rem,2.4vw,1.25rem);line-height:1.7;color:var(--marigold);margin-bottom:20px;}
+  .story-band p.closing{max-width:520px;margin:0 auto;font-size:0.98rem;line-height:1.65;opacity:0.9;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html"><img src="images/logo.jpg" alt="Shri Pushti"></a>
+    <ul class="subnav">
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="bangles.html" class="current">Sri Bangles</a></li>
+      <li><a href="pushti.html">Pushti</a></li>
+      <li><a href="seasonal.html">Seasonal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">A little colour. A lot of tradition.</div>
+    <h1>Sri Bangles</h1>
+    <p>Beautiful glass bangles chosen for celebrations, everyday elegance and all the moments in between.</p>
+
+    <div class="trust-bar">
+      <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7l9 5 9-5-9-5Z" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 12l9 5 9-5" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Premium Quality</div>
+      <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6C19 16.5 12 21 12 21Z" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Handpicked With Care</div>
+      <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2" stroke="#E7A335" stroke-width="1.8"/><path d="M3 12h18M12 8v12M8 8a2.5 2.5 0 0 1 0-5c1.5 0 2.5 1.5 4 3.5M16 8a2.5 2.5 0 0 0 0-5c-1.5 0-2.5 1.5-4 3.5" stroke="#E7A335" stroke-width="1.8" stroke-linecap="round"/></svg></span> Perfect For Gifting</div>
+    </div>
+
+    <a class="hero-cta" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20Sri%20Bangles" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#B5402C"/></svg>
+      Order on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="highlight">
+  <div class="highlight-wrap" id="highlightCarousel">
+    <div class="highlight-slide active illustrated-slide">
+      <svg width="100%" height="100%" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice" style="display:block;">
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3A1B2C"/>
+            <stop offset="55%" stop-color="#5A2438"/>
+            <stop offset="100%" stop-color="#7A2A1C"/>
+          </linearGradient>
+          <radialGradient id="flameGlow" cx="50%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#F7D26B" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#F7D26B" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="flame" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="#E7A335"/>
+            <stop offset="60%" stop-color="#F7D26B"/>
+            <stop offset="100%" stop-color="#FFF3D0"/>
+          </linearGradient>
+          <linearGradient id="brass" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#E7A335"/>
+            <stop offset="100%" stop-color="#8A5A1F"/>
+          </linearGradient>
+        </defs>
+
+        <rect width="1400" height="600" fill="url(#bgGrad)"/>
+
+        <!-- rangoli mandala, top-left -->
+        <g opacity="0.22" stroke="#E7A335" fill="none">
+          <circle cx="120" cy="90" r="70" stroke-width="1.5"/>
+          <circle cx="120" cy="90" r="50" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <circle cx="120" cy="90" r="30" stroke-width="1.5"/>
+        </g>
+        <!-- rangoli mandala, bottom-right -->
+        <g opacity="0.18" stroke="#E7A335" fill="none">
+          <circle cx="1290" cy="520" r="90" stroke-width="1.5"/>
+          <circle cx="1290" cy="520" r="65" stroke-width="1.5" stroke-dasharray="4 6"/>
+        </g>
+
+        <!-- marigold garland along the top -->
+        <g opacity="0.85">
+          <path d="M0 40 Q 175 90 350 40 T 700 40 T 1050 40 T 1400 40" stroke="#C97F1B" stroke-width="2" fill="none" opacity="0.4"/>
+          <g fill="#E7A335">
+            <circle cx="60" cy="52" r="9"/><circle cx="150" cy="70" r="7"/><circle cx="240" cy="50" r="8"/>
+            <circle cx="330" cy="66" r="6"/><circle cx="420" cy="48" r="9"/><circle cx="510" cy="68" r="7"/>
+            <circle cx="600" cy="50" r="8"/><circle cx="690" cy="66" r="6"/><circle cx="780" cy="48" r="9"/>
+            <circle cx="870" cy="68" r="7"/><circle cx="960" cy="50" r="8"/><circle cx="1050" cy="66" r="6"/>
+            <circle cx="1140" cy="48" r="9"/><circle cx="1230" cy="68" r="7"/><circle cx="1320" cy="50" r="8"/>
+          </g>
+          <g fill="#B5402C" opacity="0.8">
+            <circle cx="60" cy="52" r="3.5"/><circle cx="150" cy="70" r="3"/><circle cx="240" cy="50" r="3.5"/>
+            <circle cx="330" cy="66" r="2.5"/><circle cx="420" cy="48" r="3.5"/><circle cx="510" cy="68" r="3"/>
+            <circle cx="600" cy="50" r="3.5"/><circle cx="690" cy="66" r="2.5"/><circle cx="780" cy="48" r="3.5"/>
+            <circle cx="870" cy="68" r="3"/><circle cx="960" cy="50" r="3.5"/><circle cx="1050" cy="66" r="2.5"/>
+            <circle cx="1140" cy="48" r="3.5"/><circle cx="1230" cy="68" r="3"/><circle cx="1320" cy="50" r="3.5"/>
+          </g>
+        </g>
+
+        <!-- diya, right of center -->
+        <g transform="translate(940,300)">
+          <ellipse cx="0" cy="0" rx="220" ry="220" fill="url(#flameGlow)"/>
+          <path d="M-90 40 Q0 90 90 40 L 70 60 Q0 100 -70 60 Z" fill="url(#brass)"/>
+          <ellipse cx="0" cy="38" rx="88" ry="16" fill="#F2C879"/>
+          <ellipse cx="0" cy="38" rx="60" ry="9" fill="#8A5A1F"/>
+          <path d="M0 30 C -14 5, -10 -25, 0 -55 C 10 -25, 14 5, 0 30 Z" fill="url(#flame)"/>
+        </g>
+
+        <!-- decorative bangle stack, left of center -->
+        <g transform="translate(300,300) rotate(-8)">
+          <ellipse cx="0" cy="0" rx="150" ry="150" fill="none" stroke="#E7A335" stroke-width="10" opacity="0.9"/>
+          <ellipse cx="0" cy="0" rx="150" ry="150" fill="none" stroke="#B5402C" stroke-width="10" opacity="0.9" transform="translate(0,26)"/>
+          <ellipse cx="0" cy="0" rx="150" ry="150" fill="none" stroke="#2F6E62" stroke-width="10" opacity="0.85" transform="translate(0,52)"/>
+          <ellipse cx="0" cy="0" rx="150" ry="150" fill="none" stroke="#E7A335" stroke-width="10" opacity="0.75" transform="translate(0,78)"/>
+        </g>
+
+        <!-- scattered sparkles -->
+        <g fill="#F7D26B" opacity="0.7">
+          <circle cx="620" cy="150" r="3"/><circle cx="700" cy="120" r="2"/><circle cx="560" cy="220" r="2.5"/>
+          <circle cx="1120" cy="180" r="3"/><circle cx="1200" cy="240" r="2"/>
+        </g>
+      </svg>
+      <div class="highlight-caption"><div class="text"><div class="tag">Festive Spirit</div><h3>Wishing you the shine of new beginnings</h3></div></div>
+    </div>
+    <div class="highlight-slide">
+      <img src="images/crystal_rani_pink.jpg" alt="Sri Bangles — festive highlight">
+      <svg class="highlight-deco" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="90" cy="12" r="7" fill="#E7A335" opacity="0.35"/><circle cx="82" cy="20" r="3" fill="#E7A335" opacity="0.5"/></svg>
+      <div class="highlight-caption"><div class="text"><div class="tag">Festive Edit</div><h3>Rani Pink, dressed for the season</h3></div></div>
+    </div>
+    <div class="highlight-slide">
+      <img src="images/marble_maroon.jpg" alt="Marble Print Bangles — festive highlight">
+      <div class="highlight-caption"><div class="text"><div class="tag">Deepavali Ready</div><h3>Marble tones, deep and radiant</h3></div></div>
+    </div>
+    <div class="highlight-slide">
+      <img src="images/stone_purple_black.jpg" alt="Stone Studded Bangles — festive highlight">
+      <div class="highlight-caption"><div class="text"><div class="tag">Statement Piece</div><h3>Stone-studded, made for celebration</h3></div></div>
+    </div>
+    <div class="highlight-slide">
+      <img src="images/crystal_yellow.jpg" alt="Crystal Beaded Bangles — festive highlight">
+      <div class="highlight-caption"><div class="text"><div class="tag">Sunshine Pick</div><h3>Gold and marigold, always in season</h3></div></div>
+    </div>
+    <div class="highlight-dots">
+      <button class="active" data-idx="0" aria-label="Slide 1"></button>
+      <button data-idx="1" aria-label="Slide 2"></button>
+      <button data-idx="2" aria-label="Slide 3"></button>
+      <button data-idx="3" aria-label="Slide 4"></button>
+      <button data-idx="4" aria-label="Slide 5"></button>
+    </div>
+  </div>
+</section>
+
+<section class="grid-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">Shop by Design</div>
+      <h2>Same design, your colour.</h2>
+      <p>Pick a design, then choose the colour that speaks to you — every dot below is a real option, ready to order.</p>
+    </div>
+    <div class="collections" id="collectionsGrid"></div>
+
+    <div style="max-width:560px;margin:40px auto 0;text-align:center;font-size:0.92rem;line-height:1.6;color:rgba(43,20,32,0.75);">
+      Looking for more designs? We post new pieces first on Instagram —
+      <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;text-decoration:none;">visit @shri_pushti</a>
+      to see the full collection.
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 28px 20px;">
+  <div class="story-band">
+    <div class="eyebrow">Story</div>
+    <h3>Some traditions never go out of style.</h3>
+    <div class="lines-poem">
+      The sound of bangles.<br>
+      The shimmer of glass.<br>
+      The colours that complete a celebration.
+    </div>
+    <p class="closing">Sri Bangles is our little celebration of a tradition that has been part of Indian homes for generations.</p>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Shri Pushti — Sri Bangles &middot; <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;">Instagram</a></footer>
+
+<a class="float-wa" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20Sri%20Bangles" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#FBF1DF"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ---- Festive highlight carousel: auto-rotates, dots are clickable ----
+  (function(){
+    const root = document.getElementById('highlightCarousel');
+    if(!root) return;
+    const slides = root.querySelectorAll('.highlight-slide');
+    const dots = root.querySelectorAll('.highlight-dots button');
+    let idx = 0;
+    let timer;
+
+    function show(i){
+      slides.forEach(s=>s.classList.remove('active'));
+      dots.forEach(d=>d.classList.remove('active'));
+      slides[i].classList.add('active');
+      dots[i].classList.add('active');
+      idx = i;
+    }
+    function next(){ show((idx+1) % slides.length); }
+    function startAuto(){ timer = setInterval(next, 4200); }
+    function resetAuto(){ clearInterval(timer); startAuto(); }
+
+    dots.forEach(d=>{
+      d.addEventListener('click', ()=>{
+        show(parseInt(d.dataset.idx,10));
+        resetAuto();
+      });
+    });
+
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      startAuto();
+    }
+  })();
+
+
+  // ---- Collections: same design, multiple colours. Add a new colour by adding one
+  // line to that design's "colors" array — no other changes needed. Add a whole new
+  // design by adding one more object to this "collections" array. ----
+  const collections = [
+    {
+      id: "crystal",
+      name: "Crystal Beaded Bangles",
+      desc: "Faceted glass-bead bangles that catch the light beautifully — our most-loved everyday design.",
+      colors: [
+        { name: "Rani Pink", img: "images/crystal_rani_pink.jpg", swatch: "#C2185B" },
+        { name: "Baby Pink", img: "images/crystal_baby_pink.jpg", swatch: "#F4A6C6" },
+        { name: "Two-Tone Pink", img: "images/crystal_twotone_pink.jpg", swatch: "#E85AA0" },
+        { name: "Red", img: "images/crystal_red.jpg", swatch: "#D6284B" },
+        { name: "Yellow", img: "images/crystal_yellow.jpg", swatch: "#F2C230" },
+        { name: "Peach", img: "images/crystal_peach.jpg", swatch: "#F3C08A" },
+        { name: "Blue", img: "images/crystal_blue.jpg", swatch: "#2952CC" },
+        { name: "Grey", img: "images/crystal_grey.jpg", swatch: "#9AA0A6" },
+      ]
+    },
+    {
+      id: "marble",
+      name: "Marble Print Bangles",
+      desc: "A rich, marbled finish with a glossy shine — bold colour with a hand-painted look.",
+      colors: [
+        { name: "Black", img: "images/marble_black.jpg", swatch: "#2B2B2E" },
+        { name: "Maroon", img: "images/marble_maroon.jpg", swatch: "#8C1F44" },
+        { name: "Red", img: "images/marble_red.jpg", swatch: "#B23A3A" },
+        { name: "Olive", img: "images/marble_olive.jpg", swatch: "#7A8A3D" },
+        { name: "Green", img: "images/marble_green.jpg", swatch: "#3E7D3E" },
+        { name: "Teal", img: "images/marble_teal.jpg", swatch: "#2C8C86" },
+        { name: "Purple", img: "images/marble_purple.jpg", swatch: "#6A3FA0" },
+        { name: "Mustard", img: "images/marble_mustard.jpg", swatch: "#C98A2E" },
+        { name: "Autumn Mix", img: "images/marble_tricolor.jpg", swatch: "linear-gradient(135deg,#8A5A2E,#9AA23D)" },
+      ]
+    },
+    {
+      id: "stone",
+      name: "Stone Studded Bangles",
+      desc: "Studded with sparkling stones in a rich ombré — a statement set for weddings and festive wear.",
+      colors: [
+        { name: "Purple & Black", img: "images/stone_purple_black.jpg", swatch: "#5B2E8C" },
+      ]
+    },
+  ];
+
+  const collectionsGrid = document.getElementById('collectionsGrid');
+  collections.forEach(col=>{
+    const card = document.createElement('div');
+    card.className = 'collection-card';
+    const first = col.colors[0];
+    const msgFor = (colorName) => encodeURIComponent(`Hi Shri Pushti, I'd like to order: ${col.name} (${colorName})`);
+
+    const swatchesHTML = col.colors.map((c,i)=>`
+      <button class="swatch-dot ${i===0 ? 'active' : ''}" data-idx="${i}"
+        style="background:${c.swatch.startsWith('linear') ? c.swatch : c.swatch};background-image:url('${c.img}')"
+        title="${c.name}" aria-label="${c.name}"></button>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="collection-photo">
+        <span class="badge">${col.colors.length > 1 ? col.colors.length + ' colours' : 'Limited'}</span>
+        <img id="photo-${col.id}" src="${first.img}" alt="${col.name} — ${first.name}">
+      </div>
+      <div class="collection-info">
+        <h3>${col.name}</h3>
+        <div class="desc">${col.desc}</div>
+        ${col.colors.length > 1 ? `<div class="swatch-row" id="swatches-${col.id}">${swatchesHTML}</div>` : ''}
+        <div class="color-label" id="label-${col.id}">${first.name}</div>
+        <a class="order-btn" id="order-${col.id}" href="https://wa.me/919187572933?text=${msgFor(first.name)}" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>`;
+    collectionsGrid.appendChild(card);
+
+    if(col.colors.length > 1){
+      const swatchRow = card.querySelector(`#swatches-${col.id}`);
+      swatchRow.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.swatch-dot');
+        if(!btn) return;
+        const idx = parseInt(btn.dataset.idx, 10);
+        const chosen = col.colors[idx];
+        card.querySelector(`#photo-${col.id}`).src = chosen.img;
+        card.querySelector(`#label-${col.id}`).textContent = chosen.name;
+        card.querySelector(`#order-${col.id}`).href = `https://wa.me/919187572933?text=${msgFor(chosen.name)}`;
+        swatchRow.querySelectorAll('.swatch-dot').forEach(d=>d.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

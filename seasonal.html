@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seasonal Specials — Shri Pushti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1420; --cream:#FBF1DF; --marigold:#E7A335; --marigold-deep:#C97F1B;
+    --vermilion:#B5402C; --teal:#2F6E62; --teal-soft:#DCEAE6; --line: rgba(43,20,32,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Yeseva One',serif;font-weight:400;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,241,223,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 28px 10px;gap:10px;flex-wrap:wrap;}
+  .brand{font-family:'Yeseva One',serif;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;}
+  .brand img{height:34px;width:auto;display:block;}
+  .subnav{list-style:none;display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;font-size:0.76rem;font-weight:600;width:100%;justify-content:center;}
+  .subnav a{text-decoration:none;position:relative;padding-bottom:2px;}
+  .subnav a.current{color:var(--vermilion);}
+  @media(min-width:640px){.subnav{gap:22px;font-size:0.85rem;width:auto;justify-content:flex-start;}}
+
+  .hero{padding:56px 0 40px;text-align:center;background:linear-gradient(160deg,var(--vermilion),#7A2A1C);color:var(--cream);}
+  .eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--marigold);margin-bottom:16px;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3rem);}
+  .hero p{max-width:520px;margin:16px auto 0;opacity:0.9;line-height:1.6;}
+
+  .grid-section{padding:56px 0 80px;}
+  .grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(43,20,32,0.05);}
+  .swatch{aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative;}
+  .swatch .status-tag{position:absolute;top:14px;left:14px;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:999px;}
+  .status-tag.soon{background:var(--teal-soft);color:var(--teal);}
+  .status-tag.live{background:var(--vermilion);color:#fff;}
+  .card-body{padding:22px 24px 26px;}
+  .card-body h3{font-size:1.2rem;margin-bottom:8px;}
+  .card-body .desc{font-size:0.92rem;line-height:1.55;color:rgba(43,20,32,0.75);margin-bottom:16px;}
+  .order-btn{display:inline-block;width:100%;text-align:center;padding:11px 0;border-radius:999px;font-weight:700;font-size:0.88rem;text-decoration:none;box-sizing:border-box;}
+  .order-btn.notify{background:var(--teal-soft);color:var(--teal);}
+  .order-btn.order{background:var(--vermilion);color:#fff;}
+
+  .note{max-width:640px;margin:0 auto 40px;text-align:center;background:#fff;border:1.5px dashed var(--line);border-radius:16px;padding:22px 26px;font-size:0.92rem;line-height:1.6;color:rgba(43,20,32,0.75);}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:0.82rem;color:rgba(43,20,32,0.55);}
+
+  .float-wa{position:fixed;right:20px;bottom:20px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(43,20,32,0.28);text-decoration:none;}
+
+  .swatch img{width:100%;height:100%;object-fit:cover;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html"><img src="images/logo.jpg" alt="Shri Pushti"></a>
+    <ul class="subnav">
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="bangles.html">Sri Bangles</a></li>
+      <li><a href="pushti.html">Pushti</a></li>
+      <li><a href="seasonal.html" class="current">Seasonal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Seasonal Specials</div>
+    <h1>More from our home to yours.</h1>
+    <p>We're starting small and growing thoughtfully. New products and seasonal favourites are on the way.</p>
+  </div>
+</section>
+
+<section class="grid-section">
+  <div class="wrap">
+    <div class="note">New seasonal drops land here first. Tap "Notify me" on anything upcoming and we'll message you on WhatsApp the moment it's ready to order.</div>
+
+    <div class="grid" id="seasonalGrid"></div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Shri Pushti — Seasonal Specials</footer>
+
+<a class="float-wa" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20be%20notified%20about%20seasonal%20specials" target="_blank" rel="noopener" aria-label="Get notified on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#FBF1DF"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Seasonal items — flip status to "live" and add real pricing once ready.
+  const seasonalItems = [
+    {
+      name: "Rakhi",
+      status: "soon", // "soon" or "live"
+      img: "images/rakhi.jpg",
+      desc: "A Raksha Bandhan edit of rakhis, timed for the days before the festival.",
+    },
+    {
+      name: "Deepa",
+      status: "soon",
+      img: "images/diya.jpg",
+      desc: "A festive-season line of diyas, timed for the run-up to Deepavali.",
+    }
+  ];
+
+  const grid = document.getElementById('seasonalGrid');
+  seasonalItems.forEach(item=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    const isLive = item.status === 'live';
+    const msg = encodeURIComponent(
+      isLive
+        ? `Hi Shri Pushti, I'd like to order: ${item.name}`
+        : `Hi Shri Pushti, please notify me when ${item.name} is ready to order`
+    );
+    card.innerHTML = `
+      <div class="swatch">
+        <span class="status-tag ${isLive ? 'live' : 'soon'}">${isLive ? 'Available now' : 'Coming Soon'}</span>
+        <img src="${item.img}" alt="${item.name}">
+      </div>
+      <div class="card-body">
+        <h3>${item.name}</h3>
+        <div class="desc">${item.desc}</div>
+        <a class="order-btn ${isLive ? 'order' : 'notify'}" href="https://wa.me/919187572933?text=${msg}" target="_blank" rel="noopener">
+          ${isLive ? 'Order on WhatsApp' : 'Notify me on WhatsApp'}
+        </a>
+      </div>`;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
