@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sri Bangles — Shri Pushti</title>
+<title>Sri Jewels — Shri Pushti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -108,9 +108,11 @@
   .collections{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:56px;}
   @media(min-width:560px){.collections{grid-template-columns:repeat(2,1fr);gap:20px;}}
   @media(min-width:820px){.collections{grid-template-columns:repeat(3,1fr);}}
-  .collection-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(43,20,32,0.05);}
+  .collection-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(43,20,32,0.05);transition:transform .25s ease, box-shadow .25s ease;}
+  .collection-card:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(43,20,32,0.12);}
   .collection-photo{aspect-ratio:1/1;overflow:hidden;position:relative;background:#EFE4D0;}
-  .collection-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s ease;}
+  .collection-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+  .collection-card:hover .collection-photo img{transform:scale(1.06);}
   .collection-photo .badge{position:absolute;top:10px;left:10px;font-size:0.56rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--vermilion);color:#fff;padding:4px 9px;border-radius:999px;z-index:2;}
   .collection-info{padding:14px 14px 16px;}
   .collection-info h3{font-size:0.98rem;margin-bottom:4px;line-height:1.25;}
@@ -122,6 +124,15 @@
   .color-label{font-size:0.72rem;font-weight:700;color:var(--vermilion);margin-bottom:10px;}
   .order-btn{padding:9px 0;font-size:0.76rem;gap:5px;}
   .order-btn:hover{background:var(--marigold-deep);}
+
+  /* jewellery-set cards: a warm gold ribbon top and richer photo wash to read distinct from bangle swatches */
+  .jewel-card{position:relative;border-top:3px solid transparent;background-image:linear-gradient(#fff,#fff),linear-gradient(120deg,var(--marigold),var(--vermilion));background-origin:border-box;background-clip:padding-box,border-box;}
+  .jewel-card .collection-photo{background:radial-gradient(circle at 30% 20%,#F7E6C4,#EFDFC0 60%,#E9D3AE);}
+  .jewel-card .collection-photo .badge{background:var(--teal);}
+  .jewel-card .collection-info h3{color:var(--ink);}
+  .jewel-card .order-btn{background:var(--vermilion);}
+  .jewel-card .order-btn:hover{background:#8C2E1F;}
+  .badge-festival{position:absolute;top:10px;right:10px;font-size:0.56rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;background:linear-gradient(120deg,var(--marigold),var(--marigold-deep));color:#2B1420;padding:4px 9px;border-radius:999px;z-index:2;box-shadow:0 2px 6px rgba(43,20,32,0.2);}
 
   footer{padding:30px 0 40px;text-align:center;font-size:0.82rem;color:rgba(43,20,32,0.55);}
 
@@ -147,7 +158,8 @@
     <a class="brand" href="index.html"><img src="images/logo.jpg" alt="Shri Pushti"></a>
     <ul class="subnav">
       <li><a href="story.html">Our Story</a></li>
-      <li><a href="bangles.html" class="current">Sri Bangles</a></li>
+      <li><a href="bangles.html" class="current">Sri Jewels</a></li>
+      <li><a href="accessories.html">Sri Accessories</a></li>
       <li><a href="pushti.html">Pushti</a></li>
       <li><a href="seasonal.html">Seasonal</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -159,8 +171,8 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow">A little colour. A lot of tradition.</div>
-    <h1>Sri Bangles</h1>
-    <p>Beautiful glass bangles chosen for celebrations, everyday elegance and all the moments in between.</p>
+    <h1>Sri Jewels</h1>
+    <p>Beautiful glass bangles and jewellery sets chosen for celebrations, everyday elegance and all the moments in between.</p>
 
     <div class="trust-bar">
       <div class="trust-item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 7l9 5 9-5-9-5Z" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 12l9 5 9-5" stroke="#E7A335" stroke-width="1.8" stroke-linejoin="round"/></svg></span> Premium Quality</div>
@@ -288,11 +300,31 @@
 <section class="grid-section">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow" style="text-align:center;">Shop by Design</div>
+      <div class="eyebrow" style="text-align:center;">Bangles — Shop by Design</div>
       <h2>Same design, your colour.</h2>
       <p>Pick a design, then choose the colour that speaks to you — every dot below is a real option, ready to order.</p>
     </div>
     <div class="collections" id="collectionsGrid"></div>
+  </div>
+</section>
+
+<div style="display:flex;align-items:center;gap:14px;max-width:340px;margin:0 auto 8px;padding:0 28px;">
+  <span style="flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--marigold));"></span>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--vermilion)" stroke-width="1.6"/><circle cx="12" cy="12" r="3.2" fill="var(--marigold)"/></svg>
+  <span style="flex:1;height:1px;background:linear-gradient(90deg,var(--vermilion),transparent);"></span>
+</div>
+
+<section class="grid-section" style="padding-top:24px;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="text-align:center;">Necklace &amp; Earring Sets</div>
+      <h2>Jewellery sets, ready to order.</h2>
+      <p>Each set below is a one-of-a-kind piece we have in stock — message us on WhatsApp to check availability and order.</p>
+    </div>
+    <div style="max-width:560px;margin:0 auto 32px;text-align:center;background:linear-gradient(160deg,#FDF1DC,#F5DCA6);border:1px solid rgba(43,20,32,0.1);border-radius:16px;padding:16px 22px;font-size:0.9rem;line-height:1.55;color:var(--ink);">
+      <strong>Gauri Ganesha festival is coming up!</strong> Sets marked <span style="background:linear-gradient(120deg,var(--marigold),var(--marigold-deep));padding:2px 8px;border-radius:999px;font-weight:700;font-size:0.78rem;">Gauri Festival Offer</span> are ready for festival gifting — order early to make sure your pick is available in time.
+    </div>
+    <div class="collections" id="jewelrySetsGrid"></div>
 
     <div style="max-width:560px;margin:40px auto 0;text-align:center;font-size:0.92rem;line-height:1.6;color:rgba(43,20,32,0.75);">
       Looking for more designs? We post new pieces first on Instagram —
@@ -315,7 +347,7 @@
   </div>
 </section>
 
-<footer>© <span id="yr"></span> Shri Pushti — Sri Bangles &middot; <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;">Instagram</a></footer>
+<footer>© <span id="yr"></span> Shri Pushti — Sri Jewels &middot; <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;">Instagram</a></footer>
 
 <a class="float-wa" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20Sri%20Bangles" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#FBF1DF"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
@@ -446,6 +478,48 @@
         btn.classList.add('active');
       });
     }
+  });
+
+  // ---- Necklace & earring sets: one-off pieces, each its own card. ----
+  // Rename any of these "name" or "desc" fields whenever you like — no other changes needed.
+  const jewelrySets = [
+    { name: "Antique Gold Kundan Set", desc: "Statement gold-tone set with kundan and pearl drops.", img: "images/jewels-01.jpg" },
+    { name: "Temple Coin Necklace", desc: "Classic temple-style pendant on a beaded chain.", img: "images/jewels-02.jpg" },
+    { name: "Temple Coin Necklace — Boxed", desc: "Same beloved temple design, presented boxed and ready to gift.", img: "images/jewels-03.jpg" },
+    { name: "Temple Pendant Necklace", desc: "Delicate beaded chain with a classic temple pendant.", img: "images/jewels-04.jpg" },
+    { name: "Pearl Drop Necklace", desc: "Pearl and stone-studded pendant set with matching drop earrings.", img: "images/jewels-05.jpg" },
+    { name: "Emerald Choker Set", desc: "Green stone-studded choker with matching drop earrings.", img: "images/jewels-06.jpg" },
+    { name: "Kundan Polki Necklace", desc: "Elegant white stone kundan-style necklace and earring set.", img: "images/jewels-07.jpg" },
+    { name: "Leaf Motif Necklace", desc: "Graceful leaf-and-vine design necklace with matching earrings.", img: "images/jewels-08.jpg" },
+    { name: "Coin Drop Necklace", desc: "Layered coin-style necklace with a statement pendant.", img: "images/jewels-09.jpg" },
+    { name: "Temple Pendant Choker", desc: "Beaded choker-style necklace with a temple pendant centrepiece.", img: "images/jewels-10.jpg" },
+    { name: "Floral Pearl Necklace", desc: "Floral pendant necklace with delicate pearl drops.", img: "images/jewels-11.jpg" },
+    { name: "Layered Emerald Necklace", desc: "Double-layer necklace with emerald-cut stone detailing.", img: "images/jewels-12.jpg" },
+    { name: "Peacock Pearl Necklace", desc: "Peacock motif pendant necklace with pearl and stone drops.", img: "images/jewels-13.jpg" },
+    { name: "Multicolour Floral Necklace", desc: "Statement floral necklace set with multicolour stone detailing.", img: "images/jewels-14.jpg" },
+    { name: "Multicolour Floral Necklace II", desc: "A second colourway of our multicolour floral necklace set.", img: "images/jewels-15.jpg" },
+  ];
+
+  const jewelryGrid = document.getElementById('jewelrySetsGrid');
+  jewelrySets.forEach((item, i)=>{
+    const card = document.createElement('div');
+    card.className = 'collection-card jewel-card';
+    const msg = encodeURIComponent(`Hi Shri Pushti, I'd like to check availability for: ${item.name} (Gauri Festival Offer)`);
+    card.innerHTML = `
+      <div class="collection-photo">
+        <span class="badge">One of a kind</span>
+        <span class="badge-festival">Gauri Festival Offer</span>
+        <img src="${item.img}" alt="${item.name}">
+      </div>
+      <div class="collection-info">
+        <h3>${item.name}</h3>
+        <div class="desc">${item.desc}</div>
+        <a class="order-btn" href="https://wa.me/919187572933?text=${msg}" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>`;
+    jewelryGrid.appendChild(card);
   });
 </script>
 

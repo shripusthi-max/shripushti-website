@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sri Accessories — Shri Pushti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B1420; --cream:#FBF1DF; --marigold:#E7A335; --marigold-deep:#C97F1B;
+    --vermilion:#B5402C; --teal:#2F6E62; --teal-soft:#DCEAE6; --line: rgba(43,20,32,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Mulish',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Yeseva One',serif;font-weight:400;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(251,241,223,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 28px 10px;gap:10px;flex-wrap:wrap;}
+  .brand{font-family:'Yeseva One',serif;font-size:1.2rem;text-decoration:none;display:flex;align-items:center;}
+  .brand img{height:34px;width:auto;display:block;}
+  .subnav{list-style:none;display:flex;flex-wrap:wrap;gap:8px 16px;margin:0;padding:0;font-size:0.76rem;font-weight:600;width:100%;justify-content:center;}
+  .subnav a{text-decoration:none;position:relative;padding-bottom:2px;}
+  .subnav a.current{color:var(--vermilion);}
+  @media(min-width:640px){.subnav{gap:22px;font-size:0.85rem;width:auto;justify-content:flex-start;}}
+
+  .hero{padding:56px 0 40px;text-align:center;background:linear-gradient(160deg,var(--marigold-deep),#8C1F44);color:var(--cream);}
+  .eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--marigold);margin-bottom:16px;}
+  .hero h1{font-size:clamp(2.1rem,5vw,3rem);}
+  .hero p{max-width:520px;margin:16px auto 0;opacity:0.92;line-height:1.6;}
+
+  .hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:28px;background:var(--vermilion);color:#fff;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:0.95rem;box-shadow:0 12px 26px rgba(43,20,32,0.35);}
+
+  .grid-section{padding:56px 0 80px;}
+  .grid{display:grid;grid-template-columns:1fr;gap:24px;}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr;}}
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(43,20,32,0.05);transition:transform .25s ease, box-shadow .25s ease;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 34px rgba(43,20,32,0.14);}
+  .swatch{aspect-ratio:1/1;position:relative;overflow:hidden;}
+  .swatch img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .card:hover .swatch img{transform:scale(1.07);}
+  .card-body{padding:20px 22px 24px;}
+  .card-body h3{font-size:1.1rem;margin-bottom:6px;}
+  .card-body .desc{font-size:0.88rem;line-height:1.55;color:rgba(43,20,32,0.7);margin-bottom:16px;}
+  .order-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;text-align:center;padding:12px 0;border-radius:999px;background:var(--teal);color:#fff;font-weight:700;font-size:0.88rem;text-decoration:none;box-sizing:border-box;transition:background .2s ease;}
+  .order-btn:hover{background:var(--marigold-deep);}
+
+  /* playful pastel variants — cycled across cards so the grid feels lively, not uniform */
+  .card .accent-strip{height:5px;width:100%;}
+  .card.pastel-1 .accent-strip{background:linear-gradient(90deg,var(--vermilion),#E7857A);}
+  .card.pastel-1 .order-btn{background:var(--vermilion);}
+  .card.pastel-1 .order-btn:hover{background:#8C2E1F;}
+  .card.pastel-2 .accent-strip{background:linear-gradient(90deg,var(--teal),#6BAE9E);}
+  .card.pastel-2 .order-btn{background:var(--teal);}
+  .card.pastel-2 .order-btn:hover{background:#1F4B43;}
+  .card.pastel-3 .accent-strip{background:linear-gradient(90deg,var(--marigold-deep),var(--marigold));}
+  .card.pastel-3 .order-btn{background:var(--marigold-deep);}
+  .card.pastel-3 .order-btn:hover{background:#8A5A1F;}
+  .card .swatch .ribbon{position:absolute;top:12px;left:12px;font-size:0.6rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#fff;padding:4px 10px;border-radius:999px;z-index:2;}
+  .card.pastel-1 .ribbon{background:var(--vermilion);}
+  .card.pastel-2 .ribbon{background:var(--teal);}
+  .card.pastel-3 .ribbon{background:var(--marigold-deep);}
+
+  .note{max-width:640px;margin:0 auto 40px;text-align:center;background:#fff;border:1.5px dashed var(--line);border-radius:16px;padding:22px 26px;font-size:0.92rem;line-height:1.6;color:rgba(43,20,32,0.75);}
+
+  footer{padding:30px 0 40px;text-align:center;font-size:0.82rem;color:rgba(43,20,32,0.55);}
+
+  .float-wa{position:fixed;right:20px;bottom:20px;z-index:60;width:54px;height:54px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(43,20,32,0.28);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html"><img src="images/logo.jpg" alt="Shri Pushti"></a>
+    <ul class="subnav">
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="bangles.html">Sri Jewels</a></li>
+      <li><a href="accessories.html" class="current">Sri Accessories</a></li>
+      <li><a href="pushti.html">Pushti</a></li>
+      <li><a href="seasonal.html">Seasonal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Little Extras</div>
+    <h1>Sri Accessories</h1>
+    <p>Hair clips, scrunchies and everyday little extras — sweet, playful pieces to go with any outfit.</p>
+
+    <a class="hero-cta" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20from%20Sri%20Accessories" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#B5402C"/></svg>
+      Order on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="grid-section">
+  <div class="wrap">
+    <div class="note">Message us on WhatsApp for pricing and availability on any piece below — each set may be limited in stock.</div>
+    <div class="grid" id="accessoriesGrid"></div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Shri Pushti — Sri Accessories &middot; <a href="https://www.instagram.com/shri_pushti/" target="_blank" rel="noopener" style="color:var(--vermilion);font-weight:700;">Instagram</a></footer>
+
+<a class="float-wa" href="https://wa.me/919187572933?text=Hi%20Shri%20Pushti%2C%20I%27d%20like%20to%20order%20from%20Sri%20Accessories" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#FBF1DF"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Hair accessories — rename any "name"/"desc" whenever you like, no other changes needed.
+  const accessories = [
+    { name: "Pastel Flower & Claw Clip Set", desc: "A mixed set of flower clips, claw clips and rings in soft pastel tones.", img: "images/accessories-01.jpg" },
+    { name: "Fluffy Scrunchie & Bow Set", desc: "Plush scrunchies, knit florals and bow clips in pink, lilac and cream.", img: "images/accessories-02.jpg" },
+    { name: "Pearl & Crystal Clip Set", desc: "An elegant mix of pearl-studded scrunchie, crystal clips and floral brooch.", img: "images/accessories-03.jpg" },
+    { name: "Lace Scrunchie Set", desc: "Delicate lace-trimmed scrunchies in white, lilac and brown satin.", img: "images/accessories-04.jpg" },
+    { name: "Butterfly Hair Clip Set", desc: "Sparkling butterfly claw clips in five pretty colourways.", img: "images/accessories-05.jpg" },
+    { name: "Glitter Claw Clip", desc: "A sparkly pink and white glitter-finish claw clip.", img: "images/accessories-06.jpg" },
+  ];
+
+  const grid = document.getElementById('accessoriesGrid');
+  const pastelClasses = ['pastel-1', 'pastel-2', 'pastel-3'];
+  accessories.forEach((item, i)=>{
+    const card = document.createElement('div');
+    card.className = `card ${pastelClasses[i % pastelClasses.length]}`;
+    const msg = encodeURIComponent(`Hi Shri Pushti, I'd like to order: ${item.name} (Sri Accessories)`);
+    card.innerHTML = `
+      <div class="accent-strip"></div>
+      <div class="swatch">
+        <span class="ribbon">Sri Accessories</span>
+        <img src="${item.img}" alt="${item.name}">
+      </div>
+      <div class="card-body">
+        <h3>${item.name}</h3>
+        <div class="desc">${item.desc}</div>
+        <a class="order-btn" href="https://wa.me/919187572933?text=${msg}" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.3L2 22l4.8-1.6A11 11 0 1 0 20.5 3.5Z" fill="#fff"/><path d="M12 21a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm4.9-6.6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a7.3 7.3 0 0 1-2.1-1.3 7.9 7.9 0 0 1-1.5-1.8c-.2-.3 0-.4.1-.5l.4-.5c.1-.1.1-.2.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.3-.7-1.8s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.7c1.5.6 1.5.4 1.8.4a1.5 1.5 0 0 0 1-.7 1.3 1.3 0 0 0 .1-.7c0-.1-.2-.2-.4-.3Z" fill="#2F6E62"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>`;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
