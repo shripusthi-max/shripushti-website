@@ -398,6 +398,19 @@
         { name: "Purple & Black", img: "images/stone_purple_black.jpg", swatch: "#5B2E8C" },
       ]
     },
+    {
+      id: "pearl",
+      name: "Studded Pearl Bangles",
+      desc: "Glass bangles finished with a pearl-and-stone studded band — rich colour with a festive shine.",
+      colors: [
+        { name: "Teal", img: "images/pearl_teal.jpg", swatch: "#1E7A78" },
+        { name: "Mustard Gold", img: "images/pearl_gold.jpg", swatch: "#E0A526" },
+        { name: "Green", img: "images/pearl_green.jpg", swatch: "#1F7A3D" },
+        { name: "Multicolour Mix", img: "images/pearl_multicolor.jpg", swatch: "linear-gradient(135deg,#1E3A6E,#C2185B,#E0A526)" },
+        { name: "Magenta Pink", img: "images/pearl_pink.jpg", swatch: "#C2185B" },
+        { name: "Red", img: "images/pearl_red.jpg", swatch: "#C62828" },
+      ]
+    },
   ];
 
   const collectionsGrid = document.getElementById('collectionsGrid');
@@ -409,7 +422,7 @@
 
     const swatchesHTML = col.colors.map((c,i)=>`
       <button class="swatch-dot ${i===0 ? 'active' : ''}" data-idx="${i}"
-        style="background:${c.swatch.startsWith('linear') ? c.swatch : c.swatch};background-image:url('${c.img}')"
+        style="background:${c.swatch};"
         title="${c.name}" aria-label="${c.name}"></button>
     `).join('');
 
